@@ -1,5 +1,5 @@
 
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.FrontEndClasses;
 
 // this class is used to draw the map and store the current map data
 // (so we can rebuild the current map when going back to the Google Map screen)
@@ -29,6 +29,13 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import scps.nyu.edu.nycrealestate.Activities.GoogleMapActivity;
+import scps.nyu.edu.nycrealestate.BackEndClasses.GoogleMapData;
+import scps.nyu.edu.nycrealestate.R;
+import scps.nyu.edu.nycrealestate.BackEndClasses.RealEstateListing;
+import scps.nyu.edu.nycrealestate.BackEndClasses.SQLHelper;
+import scps.nyu.edu.nycrealestate.BackEndClasses.StreetEasyAPI;
 
 public class DrawGoogleMap extends GoogleMapActivity {
 

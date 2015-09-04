@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.Activities;
 
 import android.content.Intent;
 import android.location.Address;
@@ -27,8 +27,13 @@ import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
 import java.util.List;
+
+import scps.nyu.edu.nycrealestate.BackEndClasses.GoogleMapData;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawGoogleMap;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
+import scps.nyu.edu.nycrealestate.R;
 
 // this activity displays the google map on the screen
 public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemClickListener,
@@ -279,34 +284,36 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
     }
 
     private List<MenuObject> getMenuObjects() {
-        List<MenuObject> menuObjects = new ArrayList<>();
+        return DrawContextMenu.getMenuObjects(GoogleMapActivity.this, "CSNMLV");
 
-        MenuObject close = new MenuObject("Close Menu");
-        close.setResource(R.drawable.close);
-
-        MenuObject save = new MenuObject("Save Listing");
-        save.setResource(R.drawable.save);
-
-        MenuObject news = new MenuObject("View News");
-        news.setResource(R.drawable.news);
-
-        MenuObject settings = new MenuObject("View Map Settings");
-        settings.setResource(R.drawable.search);
-
-        MenuObject filters = new MenuObject("View Listings Filters");
-        filters.setResource(R.drawable.marker);
-
-        MenuObject voice = new MenuObject("Google Voice Input");
-        voice.setResource(R.drawable.voicesearch);
-
-        menuObjects.add(close);
-        menuObjects.add(save);
-        menuObjects.add(news);
-        menuObjects.add(settings);
-        menuObjects.add(filters);
-        menuObjects.add(voice);
-
-        return menuObjects;
+//        List<MenuObject> menuObjects = new ArrayList<>();
+//
+//        MenuObject close = new MenuObject("Close Menu");
+//        close.setResource(R.drawable.close);
+//
+//        MenuObject save = new MenuObject("Save Listing");
+//        save.setResource(R.drawable.save);
+//
+//        MenuObject news = new MenuObject("View News");
+//        news.setResource(R.drawable.news);
+//
+//        MenuObject settings = new MenuObject("View Map Settings");
+//        settings.setResource(R.drawable.search);
+//
+//        MenuObject filters = new MenuObject("View Listings Filters");
+//        filters.setResource(R.drawable.marker);
+//
+//        MenuObject voice = new MenuObject("Google Voice Input");
+//        voice.setResource(R.drawable.voicesearch);
+//
+//        menuObjects.add(close);
+//        menuObjects.add(save);
+//        menuObjects.add(news);
+//        menuObjects.add(settings);
+//        menuObjects.add(filters);
+//        menuObjects.add(voice);
+//
+//        return menuObjects;
     }
 
 }

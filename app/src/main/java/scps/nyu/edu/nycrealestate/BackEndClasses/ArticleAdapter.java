@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.BackEndClasses;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import scps.nyu.edu.nycrealestate.R;
 
 // this adapter loads a listview of real estate news articles (using data from parse.com)
 public class ArticleAdapter extends ArrayAdapter<String>

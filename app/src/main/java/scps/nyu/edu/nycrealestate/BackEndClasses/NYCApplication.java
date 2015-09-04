@@ -1,7 +1,9 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.BackEndClasses;
 
 import android.app.Application;
 import com.parse.Parse;
+
+import scps.nyu.edu.nycrealestate.R;
 
 // this class initializes the parse.com connection when the app is started
 public class NYCApplication extends Application {

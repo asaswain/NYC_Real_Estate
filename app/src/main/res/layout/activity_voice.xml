@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context="scps.nyu.edu.nycrealestate.VoiceRecognitionActivity">
+    tools:context="scps.nyu.edu.nycrealestate.Activities.VoiceRecognitionActivity">
 
     <include layout="@layout/toolbar" />
 

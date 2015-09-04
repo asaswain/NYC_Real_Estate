@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.Activities;
 
 /**
  * Created by 205263 on 8/28/15.
@@ -31,6 +31,9 @@ import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.R;
 
 // This class allows the user to speak an address, select the best fit from a list of results
 // and then send that address back to the GoogleMapActivity screen
@@ -191,26 +194,27 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements OnMen
     }
 
     private List<MenuObject> getMenuObjects() {
-        List<MenuObject> menuObjects = new ArrayList<>();
+        return DrawContextMenu.getMenuObjects(VoiceRecognitionActivity.this, "CNGML");
 
-        MenuObject close = new MenuObject("Close Menu");
-        close.setResource(R.drawable.close);
-
-        MenuObject news = new MenuObject("View News");
-        news.setResource(R.drawable.news);
-
-        MenuObject map = new MenuObject("View Map");
-        map.setResource(R.drawable.map);
-
-        MenuObject filters = new MenuObject("View Listings Filters");
-        filters.setResource(R.drawable.marker);
-
-        menuObjects.add(close);
-        menuObjects.add(news);
-        menuObjects.add(map);
-        menuObjects.add(filters);
-
-        return menuObjects;
+//        List<MenuObject> menuObjects = new ArrayList<>();
+//
+//        MenuObject close = new MenuObject("Close Menu");
+//        close.setResource(R.drawable.close);
+//
+//        MenuObject news = new MenuObject("View News");
+//        news.setResource(R.drawable.news);
+//
+//        MenuObject map = new MenuObject("View Map");
+//        map.setResource(R.drawable.map);
+//
+//        MenuObject filters = new MenuObject("View Listings Filters");
+//        filters.setResource(R.drawable.marker);
+//
+//        menuObjects.add(close);
+//        menuObjects.add(news);
+//        menuObjects.add(map);
+//        menuObjects.add(filters);
+//
+//        return menuObjects;
     }
-
 }

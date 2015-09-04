@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.BackEndClasses;
 
 import com.google.android.gms.maps.model.LatLng;
 

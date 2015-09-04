@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.FrontEndClasses;
 
 import android.content.Context;
 import android.widget.Toast;

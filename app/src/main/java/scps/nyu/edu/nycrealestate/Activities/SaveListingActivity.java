@@ -1,4 +1,4 @@
-package scps.nyu.edu.nycrealestate;
+package scps.nyu.edu.nycrealestate.Activities;
 
 import android.content.Intent;
 import android.location.Address;
@@ -23,9 +23,12 @@ import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
+import scps.nyu.edu.nycrealestate.R;
 
 // this activity saves a real estate listing to our parse.com database
 public class SaveListingActivity extends AppCompatActivity implements OnMenuItemClickListener,
@@ -252,33 +255,35 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
     }
 
     private List<MenuObject> getMenuObjects() {
-        List<MenuObject> menuObjects = new ArrayList<>();
+        return DrawContextMenu.getMenuObjects(SaveListingActivity.this,"CNGMLV");
 
-        MenuObject close = new MenuObject("Close Menu");
-        close.setResource(R.drawable.close);
-
-        MenuObject news = new MenuObject("View News");
-        news.setResource(R.drawable.news);
-
-        MenuObject map = new MenuObject("View Map");
-        map.setResource(R.drawable.map);
-
-        MenuObject settings = new MenuObject("View Map Settings");
-        settings.setResource(R.drawable.search);
-
-        MenuObject filters = new MenuObject("View Listings Filters");
-        filters.setResource(R.drawable.marker);
-
-        MenuObject voice = new MenuObject("Google Voice Input");
-        voice.setResource(R.drawable.voicesearch);
-
-        menuObjects.add(close);
-        menuObjects.add(news);
-        menuObjects.add(map);
-        menuObjects.add(settings);
-        menuObjects.add(filters);
-        menuObjects.add(voice);
-
-        return menuObjects;
+//        List<MenuObject> menuObjects = new ArrayList<>();
+//
+//        MenuObject close = new MenuObject("Close Menu");
+//        close.setResource(R.drawable.close);
+//
+//        MenuObject news = new MenuObject("View News");
+//        news.setResource(R.drawable.news);
+//
+//        MenuObject map = new MenuObject("View Map");
+//        map.setResource(R.drawable.map);
+//
+//        MenuObject settings = new MenuObject("View Map Settings");
+//        settings.setResource(R.drawable.search);
+//
+//        MenuObject filters = new MenuObject("View Listings Filters");
+//        filters.setResource(R.drawable.marker);
+//
+//        MenuObject voice = new MenuObject("Google Voice Input");
+//        voice.setResource(R.drawable.voicesearch);
+//
+//        menuObjects.add(close);
+//        menuObjects.add(news);
+//        menuObjects.add(map);
+//        menuObjects.add(settings);
+//        menuObjects.add(filters);
+//        menuObjects.add(voice);
+//
+//        return menuObjects;
     }
 }

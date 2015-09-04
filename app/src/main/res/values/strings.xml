@@ -2,6 +2,10 @@
 
     <string name="app_name">New York Real Estate</string>
 
+    <!-- Context menu -->
+
+
+
     <!-- News page -->
 
     <string name="title_activity_news">Real Estate Glance</string>
@@ -21,12 +25,14 @@
     <!-- Save Listing Page -->
 
     <string name="title_activity_save_listing">Save Listing</string>
-    <string name="map_save_error">Listing has no latitiude or longitude</string>
     <string name="save_address_caption">Address:</string>
     <string name="save_desc_caption">Description:</string>
     <string name="save_price_caption">Price:</string>
     <string name="save_sqft_caption">Square Feet:</string>
     <string name="save_number_bedrooms">Number of Bedrooms:</string>
+    <string name="map_save_error">Listing has no latitiude or longitude</string>
+    <string name="invalid_address_error">Invalid address, could not save listing</string>
+    <string name="save_complete">Saved New Listing</string>
     <string name="save_listing_button">SAVE LISTING</string>
 
     <!-- Map Settings page -->

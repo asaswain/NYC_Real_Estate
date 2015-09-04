@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseObject;
@@ -77,8 +76,7 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
                 tmpLong = Double.parseDouble(stringLong);
                 oldLatLng = new LatLng(tmpLat,tmpLong);
             } else {
-                Toast toast = Toast.makeText(this, getString(R.string.map_save_error), Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayError(this, R.string.map_save_error);
             }
         }
     }
@@ -137,8 +135,7 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
                     }
                     zipCode = address.getPostalCode();
                 } catch (java.io.IOException e) {
-                    Toast toast = Toast.makeText(this, "Invalid address, could not save listing", Toast.LENGTH_LONG);
-                    toast.show();
+                    ErrorHandler.displayError(this, R.string.invalid_address_error);
                 }
 
                 ParseObject parseListing;
@@ -174,15 +171,12 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
                 startActivity(intent);
 
                 // confirm listing saved
-                Toast toast = Toast.makeText(this, "Saved new listing", Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayError(this, R.string.save_complete);
             } else {
-                Toast toast = Toast.makeText(this, "Invalid address, could not save listing", Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayError(this, R.string.invalid_address_error);
             }
         } catch (java.io.IOException e) {
-            Toast toast = Toast.makeText(this, "Invalid address, could not save listing", Toast.LENGTH_LONG);
-            toast.show();
+            ErrorHandler.displayError(this, R.string.invalid_address_error);
         }
     }
 

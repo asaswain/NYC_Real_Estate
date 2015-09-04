@@ -16,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -154,20 +153,13 @@ public class FiltersActivity extends AppCompatActivity implements OnMenuItemClic
                 try {
                     startActivity(intent);
                 } catch (ActivityNotFoundException e) {
-                    String[] exceptionText = e.toString().split(":");
-                    String errorText = exceptionText[1];
-                    Toast toast = Toast.makeText(FiltersActivity.this, errorText, Toast.LENGTH_LONG);
-                    toast.show();
+                    ErrorHandler.displayException(FiltersActivity.this, e);
                 }
             } catch (IllegalArgumentException e) {
-                String[] exceptionText = e.toString().split(":");
-                String errorText = exceptionText[1];
-                Toast toast = Toast.makeText(FiltersActivity.this, errorText, Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayException(FiltersActivity.this, e);
             }
         } else {
-            Toast toast = Toast.makeText(FiltersActivity.this, R.string.filters_save_error, Toast.LENGTH_LONG);
-            toast.show();
+            ErrorHandler.displayError(FiltersActivity.this, R.string.filters_save_error);
         }
     }
 

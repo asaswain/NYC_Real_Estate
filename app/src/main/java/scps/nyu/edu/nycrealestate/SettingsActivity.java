@@ -16,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -144,17 +143,11 @@ public class SettingsActivity extends AppCompatActivity implements OnMenuItemCli
                 startActivity(intent);
             } catch (ActivityNotFoundException e) {
                 // display any errors that occurred when starting activity
-                String[] exceptionText = e.toString().split(":");
-                String errorText = exceptionText[1];
-                Toast toast = Toast.makeText(SettingsActivity.this, errorText, Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayException(SettingsActivity.this, e);
             }
         } catch (IllegalArgumentException e) {
             // display any errors that occurred when updating camera angle
-            String[] exceptionText = e.toString().split(":");
-            String errorText = exceptionText[1];
-            Toast toast = Toast.makeText(SettingsActivity.this, errorText, Toast.LENGTH_LONG);
-            toast.show();
+            ErrorHandler.displayException(SettingsActivity.this, e);
         }
     }
 

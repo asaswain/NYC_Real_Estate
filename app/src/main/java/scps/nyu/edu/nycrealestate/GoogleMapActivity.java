@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -72,10 +71,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
                     loadCurrentAddress = false;
                 } catch (InvalidParameterException e) {
                     // display any errors that occurred when updating current listing
-                    String[] exceptionText = e.toString().split(":");
-                    String errorText = exceptionText[1];
-                    Toast toast = Toast.makeText(GoogleMapActivity.this, errorText, Toast.LENGTH_LONG);
-                    toast.show();
+                    ErrorHandler.displayException(GoogleMapActivity.this, e);
                 }
             }
         }
@@ -98,10 +94,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
                         updateCurrentListing();
                     } catch (InvalidParameterException e) {
                         // display any errors that occurred when updating current listing
-                        String[] exceptionText = e.toString().split(":");
-                        String errorText = exceptionText[1];
-                        Toast toast = Toast.makeText(GoogleMapActivity.this, errorText, Toast.LENGTH_LONG);
-                        toast.show();
+                        ErrorHandler.displayException(GoogleMapActivity.this, e);
                     }
                 }
                 return false;
@@ -167,10 +160,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
             updateCurrentListing();
         } catch (InvalidParameterException e) {
             // display any errors that occurred when updating current listing
-            String[] exceptionText = e.toString().split(":");
-            String errorText = exceptionText[1];
-            Toast toast = Toast.makeText(GoogleMapActivity.this, errorText, Toast.LENGTH_LONG);
-            toast.show();
+            ErrorHandler.displayException(GoogleMapActivity.this, e);
         }
     }
 
@@ -243,15 +233,11 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
                 }
                 startActivity(intent);
             } else {
-                Toast toast = Toast.makeText(GoogleMapActivity.this, getResources().getString(R.string.overwrite_error), Toast.LENGTH_LONG);
-                toast.show();
+                ErrorHandler.displayError(GoogleMapActivity.this, R.string.overwrite_error);
             }
         } catch (InvalidParameterException e) {
             // display any errors that occurred when updating current listing
-            String[] exceptionText = e.toString().split(":");
-            String errorText = exceptionText[1];
-            Toast toast = Toast.makeText(GoogleMapActivity.this, errorText, Toast.LENGTH_LONG);
-            toast.show();
+            ErrorHandler.displayException(GoogleMapActivity.this, e);
         }
     }
 

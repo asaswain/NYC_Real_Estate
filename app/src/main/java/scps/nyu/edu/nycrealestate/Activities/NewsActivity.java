@@ -1,6 +1,5 @@
 package scps.nyu.edu.nycrealestate.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -24,14 +23,16 @@ import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
 import scps.nyu.edu.nycrealestate.BackEndClasses.ArticleAdapter;
-import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
 import scps.nyu.edu.nycrealestate.R;
 
-// this activity will displays a listview containing sample real estate articles from patrse.com
+// This activity class will displays a listview containing sample real estate articles from patrse.com
 // (eventually we'd like to replace this with articles from an API)
 public class NewsActivity extends AppCompatActivity implements OnMenuItemClickListener,
         OnMenuItemLongClickListener {
@@ -107,23 +108,12 @@ public class NewsActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     private void parseMenuClick(int position) {
-        Intent intent = null;
-        switch (position) {
-            case 1:
-                intent = new Intent(this, GoogleMapActivity.class);
-                break;
-            case 2:
-                intent = new Intent(this, SettingsActivity.class);
-                break;
-            case 3:
-                intent = new Intent(this, FiltersActivity.class);
-                break;
-            case 4:
-                intent = new Intent(this, VoiceRecognitionActivity.class);
-                break;
-        }
         if (position > 0) {
-            startActivity(intent);
+            try {
+                startActivity(ContextMenu.getMenuActivityIntent(this, getResources().getString(R.string.news_menu), position));
+            } catch (InvalidParameterException e) {
+                ErrorHandler.displayException(this, e);
+            }
         }
     }
 
@@ -165,32 +155,6 @@ public class NewsActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     private List<MenuObject> getMenuObjects() {
-
-        return DrawContextMenu.getMenuObjects(NewsActivity.this, "CGMLV");
-
-//        List<MenuObject> menuObjects = new ArrayList<>();
-//
-//        MenuObject close = new MenuObject("Close Menu");
-//        close.setResource(R.drawable.close);
-//
-//        MenuObject map = new MenuObject("View Map");
-//        map.setResource(R.drawable.map);
-//
-//        MenuObject settings = new MenuObject("Select Map Settings");
-//        settings.setResource(R.drawable.search);
-//
-//        MenuObject filters = new MenuObject("Select Listings Filters");
-//        filters.setResource(R.drawable.marker);
-//
-//        MenuObject voice = new MenuObject("Google Voice Input");
-//        voice.setResource(R.drawable.voicesearch);
-//
-//        menuObjects.add(close);
-//        menuObjects.add(map);
-//        menuObjects.add(settings);
-//        menuObjects.add(filters);
-//        menuObjects.add(voice);
-//
-//        return menuObjects;
+        return ContextMenu.getMenuObjects(NewsActivity.this, getResources().getString(R.string.news_menu));
     }
 }

@@ -18,13 +18,17 @@
     <string name="context_menu">Context menu</string>
     <string name="real_estate_title">Real Estate News</string>
     <string name="real_estate_news1">No Update Today</string>
+    <string name="news_menu">CloseMenu-GoogleMap-MapSettings-ListingSettings</string>
 
     <!-- Google Map page -->
 
     <string name="title_activity_google_map">Google Map</string>
     <string name="keyboard_search_label">Search</string>
+    <string name="blank_address_error">Please first enter an address</string>
+    <string name="invalid_map_address_error">Invalid address, please try again</string>
     <string name="overwrite_error">Sorry, you cannot update data for existing real estate listings</string>
     <string name="please_wait_msg">Querying data from StreetEasy&#8230;please wait</string>
+    <string name="google_map_menu">CloseMenu-SaveListing-News-MapSettings-ListingSettings</string>
 
     <!-- Save Listing Page -->
 
@@ -35,9 +39,10 @@
     <string name="save_sqft_caption">Square Feet:</string>
     <string name="save_number_bedrooms">Number of Bedrooms:</string>
     <string name="map_save_error">Listing has no latitiude or longitude</string>
-    <string name="invalid_address_error">Invalid address, could not save listing</string>
+    <string name="invalid_save_address_error">Invalid address, could not save listing</string>
     <string name="save_complete">Saved New Listing</string>
     <string name="save_listing_button">SAVE LISTING</string>
+    <string name="save_listing_menu">CloseMenu-News-GoogleMap-MapSettings-ListingSettings</string>
 
     <!-- Map Settings page -->
 
@@ -45,6 +50,7 @@
     <string name="map_type_caption">Map Type:</string>
     <string name="camera_caption">Camera Angle:</string>
     <string name="save_settings_button">SAVE MAP SETTINGS</string>
+    <string name="map_settings_menu">CloseMenu-News-GoogleMap-ListingSettings</string>
 
     <!-- Listing Filters page -->
 
@@ -53,11 +59,13 @@
     <string name="nbr_bedrooms_caption">Number of Bedrooms:</string>
     <string name="save_filters_button">SAVE LISTING FILTERS</string>
     <string name="filters_save_error">Cannot save with blank fields</string>
+    <string name="listing_filters_menu">CloseMenu-News-GoogleMap-MapSettings</string>
 
     <!-- Google Voice page  -->
 
     <string name="title_activity_voice">Google Voice Input</string>
     <string name="voice_prompt">Please speak the address name&#8230;</string>
+    <string name="google_voice_menu">CloseMenu-News-GoogleMap-MapSettings-ListingSettings</string>
 
     <!-- Parse.com database info -->
 

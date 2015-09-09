@@ -30,12 +30,12 @@ import java.security.InvalidParameterException;
 import java.util.List;
 
 import scps.nyu.edu.nycrealestate.BackEndClasses.GoogleMapData;
-import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ContextMenu;
 import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawGoogleMap;
 import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
 import scps.nyu.edu.nycrealestate.R;
 
-// this activity displays the google map on the screen
+// This activity class displays the google map and allows the user to input new addresses
 public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemClickListener,
         OnMenuItemLongClickListener, OnMapReadyCallback {
 
@@ -140,13 +140,13 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
                     SupportMapFragment mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     mapFrag.getMapAsync(GoogleMapActivity.this);
                 } else {
-                    throw new InvalidParameterException("Invalid address, please try again");
+                    throw new InvalidParameterException(getResources().getString(R.string.invalid_map_address_error));
                 }
             } catch (java.io.IOException e) {
                 throw new InvalidParameterException("IO Error: " + e.toString());
             }
         } else {
-            throw new InvalidParameterException("Please first enter an address");
+            throw new InvalidParameterException(getResources().getString(R.string.blank_address_error));
         }
     }
 
@@ -169,6 +169,11 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
         }
     }
 
+    public void openVoiceSearch(View v) {
+        Intent intent = new Intent(this, VoiceRecognitionActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onMenuItemLongClick(View clickedView, int position) {
         parseMenuClick(position);
@@ -180,26 +185,16 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
     }
 
     private void parseMenuClick(int position) {
-        Intent intent = null;
-        switch (position) {
-            case 1:
+        if (position > 0) {
+            if (position > 1) {
+                try {
+                    startActivity(ContextMenu.getMenuActivityIntent(this, getResources().getString(R.string.google_map_menu), position));
+                } catch (InvalidParameterException e) {
+                    ErrorHandler.displayException(this, e);
+                }
+            } else {
                 saveListing();
-                break;
-            case 2:
-                intent = new Intent(this, NewsActivity.class);
-                break;
-            case 3:
-                intent = new Intent(this, SettingsActivity.class);
-                break;
-            case 4:
-                intent = new Intent(this, FiltersActivity.class);
-                break;
-            case 5:
-                intent = new Intent(this, VoiceRecognitionActivity.class);
-                break;
-        }
-        if (position > 1) {
-            startActivity(intent);
+            }
         }
     }
 
@@ -284,36 +279,6 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMenuItemCl
     }
 
     private List<MenuObject> getMenuObjects() {
-        return DrawContextMenu.getMenuObjects(GoogleMapActivity.this, "CSNMLV");
-
-//        List<MenuObject> menuObjects = new ArrayList<>();
-//
-//        MenuObject close = new MenuObject("Close Menu");
-//        close.setResource(R.drawable.close);
-//
-//        MenuObject save = new MenuObject("Save Listing");
-//        save.setResource(R.drawable.save);
-//
-//        MenuObject news = new MenuObject("View News");
-//        news.setResource(R.drawable.news);
-//
-//        MenuObject settings = new MenuObject("View Map Settings");
-//        settings.setResource(R.drawable.search);
-//
-//        MenuObject filters = new MenuObject("View Listings Filters");
-//        filters.setResource(R.drawable.marker);
-//
-//        MenuObject voice = new MenuObject("Google Voice Input");
-//        voice.setResource(R.drawable.voicesearch);
-//
-//        menuObjects.add(close);
-//        menuObjects.add(save);
-//        menuObjects.add(news);
-//        menuObjects.add(settings);
-//        menuObjects.add(filters);
-//        menuObjects.add(voice);
-//
-//        return menuObjects;
+        return ContextMenu.getMenuObjects(GoogleMapActivity.this, getResources().getString(R.string.google_map_menu));
     }
-
 }

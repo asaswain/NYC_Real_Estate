@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 
-// this class is used to store settings for the google map, both the map settings and the current data
+// This class is used to store settings for the google map, both the map settings and the current data
 // (so we can rebuild the current map when going back to the Google Map screen)
 // this may be bad style, but it works for now
 

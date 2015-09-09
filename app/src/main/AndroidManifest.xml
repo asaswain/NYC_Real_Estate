@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.SettingsActivity"
+            android:name=".Activities.MapSettingsActivity"
             android:label="@string/title_activity_settings"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.FiltersActivity"
+            android:name=".Activities.ListingFiltersActivity"
             android:label="@string/title_activity_filters"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"

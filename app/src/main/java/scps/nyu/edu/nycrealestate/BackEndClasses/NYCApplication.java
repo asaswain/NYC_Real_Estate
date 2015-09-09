@@ -5,7 +5,7 @@ import com.parse.Parse;
 
 import scps.nyu.edu.nycrealestate.R;
 
-// this class initializes the parse.com connection when the app is started
+// This class initializes the parse.com connection when the app is started
 public class NYCApplication extends Application {
 
     @Override public void onCreate() {
@@ -16,6 +16,6 @@ public class NYCApplication extends Application {
                 this,
                 getResources().getString(R.string.parse_app_id),
                 getResources().getString(R.string.parse_client_key)
-        ); // Your Application ID and Client Key are defined elsewhere
+        ); // Your Application ID and Client Key are defined in the String.xml file
     }
 }

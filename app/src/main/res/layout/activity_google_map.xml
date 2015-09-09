@@ -16,6 +16,15 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/base"
+            android:onClick="openVoiceSearch"
+            android:src="@drawable/voicesearch" />
+
         <EditText
             android:id="@+id/address"
             android:layout_width="0dp"

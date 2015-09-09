@@ -23,14 +23,15 @@ import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Locale;
 
-import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ContextMenu;
 import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
 import scps.nyu.edu.nycrealestate.R;
 
-// this activity saves a real estate listing to our parse.com database
+// This activity classsaves a real estate listing to our parse.com database
 public class SaveListingActivity extends AppCompatActivity implements OnMenuItemClickListener,
         OnMenuItemLongClickListener {
 
@@ -138,7 +139,7 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
                     }
                     zipCode = address.getPostalCode();
                 } catch (java.io.IOException e) {
-                    ErrorHandler.displayError(this, R.string.invalid_address_error);
+                    ErrorHandler.displayError(this, R.string.invalid_save_address_error);
                 }
 
                 ParseObject parseListing;
@@ -176,10 +177,10 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
                 // confirm listing saved
                 ErrorHandler.displayError(this, R.string.save_complete);
             } else {
-                ErrorHandler.displayError(this, R.string.invalid_address_error);
+                ErrorHandler.displayError(this, R.string.invalid_save_address_error);
             }
         } catch (java.io.IOException e) {
-            ErrorHandler.displayError(this, R.string.invalid_address_error);
+            ErrorHandler.displayError(this, R.string.invalid_save_address_error);
         }
     }
 
@@ -194,26 +195,12 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
     }
 
     private void parseMenuClick(int position) {
-        Intent intent = null;
-        switch (position) {
-            case 1:
-                intent = new Intent(this, NewsActivity.class);
-                break;
-            case 2:
-                intent = new Intent(this, GoogleMapActivity.class);
-                break;
-            case 3:
-                intent = new Intent(this, SettingsActivity.class);
-                break;
-            case 4:
-                intent = new Intent(this, FiltersActivity.class);
-                break;
-            case 5:
-                intent = new Intent(this, VoiceRecognitionActivity.class);
-                break;
-        }
         if (position > 0) {
-            startActivity(intent);
+            try {
+                startActivity(ContextMenu.getMenuActivityIntent(this, getResources().getString(R.string.save_listing_menu), position));
+            } catch (InvalidParameterException e) {
+                ErrorHandler.displayException(this, e);
+            }
         }
     }
 
@@ -255,35 +242,6 @@ public class SaveListingActivity extends AppCompatActivity implements OnMenuItem
     }
 
     private List<MenuObject> getMenuObjects() {
-        return DrawContextMenu.getMenuObjects(SaveListingActivity.this,"CNGMLV");
-
-//        List<MenuObject> menuObjects = new ArrayList<>();
-//
-//        MenuObject close = new MenuObject("Close Menu");
-//        close.setResource(R.drawable.close);
-//
-//        MenuObject news = new MenuObject("View News");
-//        news.setResource(R.drawable.news);
-//
-//        MenuObject map = new MenuObject("View Map");
-//        map.setResource(R.drawable.map);
-//
-//        MenuObject settings = new MenuObject("View Map Settings");
-//        settings.setResource(R.drawable.search);
-//
-//        MenuObject filters = new MenuObject("View Listings Filters");
-//        filters.setResource(R.drawable.marker);
-//
-//        MenuObject voice = new MenuObject("Google Voice Input");
-//        voice.setResource(R.drawable.voicesearch);
-//
-//        menuObjects.add(close);
-//        menuObjects.add(news);
-//        menuObjects.add(map);
-//        menuObjects.add(settings);
-//        menuObjects.add(filters);
-//        menuObjects.add(voice);
-//
-//        return menuObjects;
+        return ContextMenu.getMenuObjects(SaveListingActivity.this, getResources().getString(R.string.save_listing_menu));
     }
 }

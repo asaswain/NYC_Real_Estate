@@ -3,9 +3,7 @@ package scps.nyu.edu.nycrealestate.FrontEndClasses;
 import android.content.Context;
 import android.widget.Toast;
 
-/**
- * Created by asaswain on 9/2/15.
- */
+// This class display errors and exceptions as toast messages
 public class ErrorHandler {
 
     /**

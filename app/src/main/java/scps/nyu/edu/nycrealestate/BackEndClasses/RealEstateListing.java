@@ -2,7 +2,7 @@ package scps.nyu.edu.nycrealestate.BackEndClasses;
 
 import com.google.android.gms.maps.model.LatLng;
 
-// this class stores the data for an individual real estate listing
+// This class stores the data for an individual real estate listing
 public class RealEstateListing {
 
     private String desc;

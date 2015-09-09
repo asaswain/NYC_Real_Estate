@@ -37,6 +37,7 @@ import scps.nyu.edu.nycrealestate.BackEndClasses.RealEstateListing;
 import scps.nyu.edu.nycrealestate.BackEndClasses.SQLHelper;
 import scps.nyu.edu.nycrealestate.BackEndClasses.StreetEasyAPI;
 
+// This class draws the google maps object on the screen
 public class DrawGoogleMap extends GoogleMapActivity {
 
     Context context;

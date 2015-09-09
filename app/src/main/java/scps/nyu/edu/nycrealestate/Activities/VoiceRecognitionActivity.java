@@ -29,13 +29,15 @@ import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
-import scps.nyu.edu.nycrealestate.FrontEndClasses.DrawContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ContextMenu;
+import scps.nyu.edu.nycrealestate.FrontEndClasses.ErrorHandler;
 import scps.nyu.edu.nycrealestate.R;
 
-// This class allows the user to speak an address, select the best fit from a list of results
+// This activity class allows the user to speak an address, select the best fit from a list of results
 // and then send that address back to the GoogleMapActivity screen
 public class VoiceRecognitionActivity extends AppCompatActivity implements OnMenuItemClickListener,
         OnMenuItemLongClickListener
@@ -139,20 +141,12 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements OnMen
     }
 
     private void parseMenuClick(int position) {
-        Intent intent = null;
-        switch (position) {
-            case 1:
-                intent = new Intent(this, NewsActivity.class);
-                break;
-            case 2:
-                intent = new Intent(this, GoogleMapActivity.class);
-                break;
-            case 3:
-                intent = new Intent(this, FiltersActivity.class);
-                break;
-        }
         if (position > 0) {
-            startActivity(intent);
+            try {
+                startActivity(ContextMenu.getMenuActivityIntent(this, getResources().getString(R.string.google_map_menu), position));
+            } catch (InvalidParameterException e) {
+                ErrorHandler.displayException(this, e);
+            }
         }
     }
 
@@ -194,27 +188,6 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements OnMen
     }
 
     private List<MenuObject> getMenuObjects() {
-        return DrawContextMenu.getMenuObjects(VoiceRecognitionActivity.this, "CNGML");
-
-//        List<MenuObject> menuObjects = new ArrayList<>();
-//
-//        MenuObject close = new MenuObject("Close Menu");
-//        close.setResource(R.drawable.close);
-//
-//        MenuObject news = new MenuObject("View News");
-//        news.setResource(R.drawable.news);
-//
-//        MenuObject map = new MenuObject("View Map");
-//        map.setResource(R.drawable.map);
-//
-//        MenuObject filters = new MenuObject("View Listings Filters");
-//        filters.setResource(R.drawable.marker);
-//
-//        menuObjects.add(close);
-//        menuObjects.add(news);
-//        menuObjects.add(map);
-//        menuObjects.add(filters);
-//
-//        return menuObjects;
+        return ContextMenu.getMenuObjects(VoiceRecognitionActivity.this, getResources().getString(R.string.google_voice_menu));
     }
 }

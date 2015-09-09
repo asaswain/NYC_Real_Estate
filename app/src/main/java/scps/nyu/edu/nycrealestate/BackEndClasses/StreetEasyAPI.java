@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// this class queries a StreetEasy API to get aggregate real estate statictics for a zipcode
+// This class queries a StreetEasy API to get aggregate real estate statictics for a zipcode
 // and number of bedrooms and then saves that data to our SQL database for future reference
 // (because the StreetEasy API only allows 100 queries per hour so we need to save the data locally)
 

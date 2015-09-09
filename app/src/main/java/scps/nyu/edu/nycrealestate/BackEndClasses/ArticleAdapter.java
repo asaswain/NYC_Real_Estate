@@ -12,7 +12,7 @@ import java.util.List;
 
 import scps.nyu.edu.nycrealestate.R;
 
-// this adapter loads a listview of real estate news articles (using data from parse.com)
+// This adapter class loads a listview of real estate news articles (using data from parse.com)
 public class ArticleAdapter extends ArrayAdapter<String>
 {
     private Context context;
